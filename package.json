@@ -4,6 +4,8 @@
   "description": "Navigator is a server that accepts SSE connections to serve real-time feature flag updates to clients using waypost SDKs. Navigator stays up to date by recieving webhooks from the Waypost Feature Flag managment application.",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "start-watch": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +19,11 @@
   },
   "homepage": "https://github.com/waypost-io/navigator#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
