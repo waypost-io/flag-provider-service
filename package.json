@@ -1,0 +1,22 @@
+{
+  "name": "navigator",
+  "version": "1.0.0",
+  "description": "Navigator is a server that accepts SSE connections to serve real-time feature flag updates to clients using waypost SDKs. Navigator stays up to date by recieving webhooks from the Waypost Feature Flag managment application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waypost-io/navigator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waypost-io/navigator/issues"
+  },
+  "homepage": "https://github.com/waypost-io/navigator#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
