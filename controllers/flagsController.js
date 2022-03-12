@@ -1,5 +1,6 @@
 /*
-Todo: Validate that the POST request is from the FF manager
+TODO: Validate that the POST request is from the FF manager
+TODO: Add persistant flag data.
 
 
 */

@@ -1,3 +1,9 @@
+/*
+TODO: validate that the new connection is from a valid client
+TODO: Add persistant flag data
+
+*/
+
 const handleNewConnection = async (req, res) => {
   const headers = {
     "Content-Type": "text/event-stream",
@@ -7,7 +13,7 @@ const handleNewConnection = async (req, res) => {
 
   res.writeHead(200, headers);
 
-  const data = `data: ${JSON.stringify(flags)}\n\n`;
+  const data = `data: ${JSON.stringify(flags)}\n\n`; // flags
 
   res.write(data);
 
