@@ -4,7 +4,7 @@ const router = express.Router();
 const { replaceFlags } = require("../controllers/flagsController");
 const streamController = require("../controllers/streamController");
 
-router.post("/flags", replaceFlags);
+router.post("/flags", replaceFlags, streamController.sendUpdate);
 
 router.get("/stream", streamController.handleNewConnection);
 
