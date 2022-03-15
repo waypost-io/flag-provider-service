@@ -1,4 +1,6 @@
 const { getFlags } = require("../lib/flags");
+
+const clients = [];
 /*
 TODO: validate that the new connection is from a valid client
 */
