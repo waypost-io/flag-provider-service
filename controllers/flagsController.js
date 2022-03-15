@@ -1,3 +1,6 @@
+const { type } = require("express/lib/response");
+const { setFlags } = require("../lib/flags.js");
+
 /*
 TODO: Validate that the POST request is from the FF manager
 TODO: Add persistant flag data.
@@ -5,13 +8,14 @@ TODO: Add persistant flag data.
 
 */
 
-module.exports = {
-  async replaceFlags(req, res, next) {
-    try {
-      // save flags
-      res.sendStatus(200);
-    } catch (err) {
-      res.status(500).send("Error saving flags");
-    }
-  },
-};
+async function replaceFlags(req, res, next) {
+  try {
+    setFlags(req.body);
+    res.status(200).send("Flags saved");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error saving flags");
+  }
+}
+
+module.exports.replaceFlags = replaceFlags;
