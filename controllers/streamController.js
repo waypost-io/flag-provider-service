@@ -1,6 +1,6 @@
 const { getFlags } = require("../lib/flags");
 
-const clients = [];
+let clients = [];
 /*
 TODO: validate that the new connection is from a valid client
 */
@@ -11,6 +11,10 @@ const handleNewConnection = async (req, res) => {
     Connection: "keep-alive",
     "Cache-Control": "no-cache",
   };
+
+  console.log(res.getHeaders());
+  // res.send(getFlags());
+  // return;
 
   res.writeHead(200, headers);
 
@@ -34,6 +38,7 @@ const handleNewConnection = async (req, res) => {
 };
 
 const sendUpdate = (req, res, next) => {
+  console.log("New data sent");
   const data = `data: ${JSON.stringify(getFlags())}\n\n`;
   clients.forEach(({ res }) => res.write(data));
 };

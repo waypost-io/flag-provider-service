@@ -6,6 +6,15 @@ const { fetchFlags } = require("./lib/flags.js");
 const app = express();
 const PORT = 5050;
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // const flags = getFlags();
 app.use(morgan("tiny"));
 app.use(express.json());
