@@ -12,6 +12,7 @@ async function replaceFlags(req, res, next) {
   try {
     setFlags(req.body);
     res.status(200).send("Flags saved");
+    next();
   } catch (err) {
     console.log(err);
     res.status(500).send("Error saving flags");
