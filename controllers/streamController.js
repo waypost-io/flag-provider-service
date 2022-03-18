@@ -38,15 +38,15 @@ const handleNewConnection = async (req, res) => {
   });
 };
 
-const sendUpdate = (req, res, next) => {
-  console.log("New data sent to client");
-  const data = `data: ${JSON.stringify(getFlags())}\n\n`;
-  clients.forEach(({ res }) => res.write(data));
-};
-
-// What does the client do with this info?
-const status = (req, res) => res.json({ clients: clients.length });
+// const sendUpdate = (req, res, next) => {
+//   console.log("New data sent to client");
+//   console.log(getFlags());
+//   const data = `data: ${JSON.stringify(getFlags())}\n\n`;
+//   clients.forEach(({ res }) => {
+//     res.write(data)
+//   });
+// };
 
 exports.handleNewConnection = handleNewConnection;
-exports.sendUpdate = sendUpdate;
-exports.status = status;
+// exports.sendUpdate = sendUpdate;
+exports.clients = clients;

@@ -6,8 +6,8 @@ const streamController = require("../controllers/streamController");
 
 router.post(
   "/flags",
-  flagsController.replaceFlags,
-  streamController.sendUpdate
+  flagsController.replaceFlags
+  // streamController.sendUpdate
 );
 
 router.get("/flags", flagsController.getFlags);
