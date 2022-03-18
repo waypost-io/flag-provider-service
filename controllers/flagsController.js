@@ -11,14 +11,11 @@ TODO: Add persistant flag data.
 
 async function replaceFlags(req, res, next) {
   try {
-    console.log("received");
     setFlags(req.body);
     // Moved from streamController sendUpdate()
-    console.log("New data sent to client");
-    console.log(returnFlags());
     const data = `data: ${JSON.stringify(returnFlags())}\n\n`;
-    clients.forEach(({ res }) => {
-      res.write(data);
+    clients.forEach(({ res: clientRes }) => {
+      clientRes.write(data);
     });
     res.status(200).send("Received");
     // next();
