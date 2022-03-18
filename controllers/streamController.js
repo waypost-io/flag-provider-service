@@ -1,4 +1,4 @@
-const { getFlags } = require("../lib/flags");
+const { returnFlags } = require("../lib/flags");
 
 let clients = [];
 /*
@@ -12,13 +12,14 @@ const handleNewConnection = async (req, res) => {
     "Cache-Control": "no-cache",
   };
 
-  console.log(res.getHeaders());
+  console.log("user connected");
+  // console.log(res.getHeaders());
   // res.send(getFlags());
   // return;
 
   res.writeHead(200, headers);
 
-  const data = `data: ${JSON.stringify(getFlags())}\n\n`; // flags
+  const data = `data: ${JSON.stringify(returnFlags())}\n\n`; // flags
 
   res.write(data);
 
@@ -38,7 +39,7 @@ const handleNewConnection = async (req, res) => {
 };
 
 const sendUpdate = (req, res, next) => {
-  console.log("New data sent");
+  console.log("New data sent to client");
   const data = `data: ${JSON.stringify(getFlags())}\n\n`;
   clients.forEach(({ res }) => res.write(data));
 };
