@@ -1,8 +1,7 @@
 const { flagManager } = require("../lib/flags.js");
+
 let clients = [];
-/*
-TODO: validate that the new connection is from a valid client
-*/
+
 const handleNewConnection = async (req, res) => {
   try {
     const headers = {
@@ -44,5 +43,5 @@ function sendToClients() {
   });
 }
 
-exports.handleNewConnection = handleNewConnection;
-exports.sendToClients = sendToClients;
+module.exports.handleNewConnection = handleNewConnection;
+module.exports.sendToClients = sendToClients;
