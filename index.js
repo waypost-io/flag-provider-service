@@ -1,8 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
-const routes = require("./routes/index.js");
-const { fetchFlags } = require("./lib/flags.js");
-const { fetchKey } = require("./lib/key.js");
+const routes = require("./routes/routes.js");
+const { flagManager } = require("./lib/flags.js");
+const { keyManager } = require("./lib/key.js");
 
 const app = express();
 const PORT = 5050;
@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Get the data from FF manager on initial boot
-fetchFlags();
-fetchKey();
+flagManager.fetchFlags();
+keyManager.fetchKey();
 
 app.use("/", routes);
 

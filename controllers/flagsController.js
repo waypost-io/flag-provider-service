@@ -1,9 +1,9 @@
-const { setFlags, returnFlags } = require("../lib/flags.js");
+const { flagManager } = require("../lib/flags.js");
 const { sendToClients } = require("./streamController");
 
 async function replaceFlags(req, res, next) {
   try {
-    setFlags(req.body);
+    flagManager.setFlags(req.body);
     sendToClients();
     res.status(200).send({ message: "Received" });
   } catch (err) {
@@ -14,7 +14,7 @@ async function replaceFlags(req, res, next) {
 
 async function getFlags(req, res, next) {
   try {
-    res.status(200).send(returnFlags());
+    res.status(200).send(flagManager.getFlags());
   } catch (err) {
     res.status(500).send({ message: "Error getting flags" });
   }
