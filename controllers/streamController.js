@@ -23,7 +23,6 @@ const handleNewConnection = async (req, res) => {
       id: clientId,
       res,
     };
-
     clients.push(newClient);
 
     res.write(data);

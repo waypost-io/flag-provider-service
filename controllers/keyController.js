@@ -12,13 +12,17 @@ async function replaceKey(req, res, next) {
 
 async function validateKey(req, res, next) {
   const requestKey = req.query.sdk_key;
-
-  if (requestKey !== returnKey()) {
-    res.status(403).send({
-      message: "Invalid sdk key",
-    });
-  } else {
-    next();
+  try {
+    if (requestKey !== returnKey()) {
+      res.status(403).send({
+        message: "Invalid sdk key",
+      });
+    } else {
+      next();
+    }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send({ message: err.message });
   }
 }
 
