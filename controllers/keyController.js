@@ -3,7 +3,7 @@ const { setKey, returnKey } = require("../lib/key");
 async function replaceKey(req, res, next) {
   try {
     setKey(req.body.key);
-    res.status(200).send("Received");
+    res.status(200).send({ message: "Received" });
   } catch (err) {
     console.log(err.message);
     res.status(500).send({ message: "Error sending key" });
