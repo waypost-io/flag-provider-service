@@ -4,11 +4,11 @@ const router = express.Router();
 const flagsController = require("../controllers/flagsController");
 const streamController = require("../controllers/streamController");
 const keyController = require("../controllers/keyController");
-const { validateKWebhook } = require("../lib/validateWebhook");
+const { validateWebhook } = require("../lib/validateWebhook");
 
-router.post("/key", validateKWebhook, keyController.replaceKey);
+router.post("/key", validateWebhook, keyController.replaceKey);
 
-router.post("/flags", validateKWebhook, flagsController.replaceFlags);
+router.post("/flags", validateWebhook, flagsController.replaceFlags);
 
 router.get("/flags", keyController.validateKey, flagsController.getFlags);
 
