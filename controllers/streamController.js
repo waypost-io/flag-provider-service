@@ -10,7 +10,7 @@ const handleNewConnection = async (req, res) => {
     "Cache-Control": "no-cache",
   };
 
-  console.log("user connected");
+  console.log("New user connected");
 
   res.writeHead(200, headers);
 
