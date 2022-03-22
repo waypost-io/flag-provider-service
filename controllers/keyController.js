@@ -1,8 +1,8 @@
-const { setKey, returnKey } = require("../lib/key");
+const { keyManager } = require("../lib/key");
 
 async function replaceKey(req, res, next) {
   try {
-    setKey(req.body.key);
+    keyManager.setKey(req.body.key);
     res.status(200).send({ message: "Received" });
   } catch (err) {
     console.log(err.message);
@@ -13,7 +13,7 @@ async function replaceKey(req, res, next) {
 async function validateKey(req, res, next) {
   const requestKey = req.query.sdk_key;
   try {
-    if (requestKey !== returnKey()) {
+    if (requestKey !== keyManager.getKey()) {
       res.status(403).send({
         message: "Invalid sdk key",
       });

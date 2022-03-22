@@ -1,8 +1,7 @@
-const { returnFlags } = require("../lib/flags.js");
+const { flagManager } = require("../lib/flags.js");
+
 let clients = [];
-/*
-TODO: validate that the new connection is from a valid client
-*/
+
 const handleNewConnection = async (req, res) => {
   try {
     const headers = {
@@ -15,7 +14,7 @@ const handleNewConnection = async (req, res) => {
 
     res.writeHead(200, headers);
 
-    const data = `data: ${JSON.stringify(returnFlags())}\n\n`; // flags
+    const data = `data: ${JSON.stringify(flagManager.getFlags())}\n\n`; // flags
 
     const clientId = Date.now();
 
@@ -38,11 +37,11 @@ const handleNewConnection = async (req, res) => {
 };
 
 function sendToClients() {
-  const data = `data: ${JSON.stringify(returnFlags())}\n\n`;
+  const data = `data: ${JSON.stringify(flagManager.getFlags())}\n\n`;
   clients.forEach((client) => {
     client.res.write(data);
   });
 }
 
-exports.handleNewConnection = handleNewConnection;
-exports.sendToClients = sendToClients;
+module.exports.handleNewConnection = handleNewConnection;
+module.exports.sendToClients = sendToClients;
