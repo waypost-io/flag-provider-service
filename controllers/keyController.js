@@ -14,7 +14,7 @@ async function validateKey(req, res, next) {
   const requestKey = req.query.sdk_key;
 
   if (requestKey !== returnKey()) {
-    res.status(500).send({
+    res.status(403).send({
       message: "Invalid sdk key",
     });
   } else {
