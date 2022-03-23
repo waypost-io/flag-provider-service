@@ -63,6 +63,5 @@ test("Testing whether the setFlags method sets the flags correctly", () => {
 
 test("Testing that the getFlags method returns the correct value", () => {
   const flags = flagManager.getFlags();
-
   expect(flags).toStrictEqual(testFlags);
 });
