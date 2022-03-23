@@ -9,10 +9,6 @@ beforeEach(() => {
   keyManager._key = "1111";
 });
 
-afterEach(() => {
-  keyManager._key = "";
-});
-
 test("Mock testing the fetch key method", async () => {
   axios.get.mockResolvedValue({ data: "abc123" });
 

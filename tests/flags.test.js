@@ -37,10 +37,6 @@ beforeEach(() => {
   flagManager._flags = testFlags;
 });
 
-afterEach(() => {
-  flagManager._flags = [];
-});
-
 test("Mock testing the fetch flags method", async () => {
   axios.get.mockResolvedValue({
     data: mockFlag,
